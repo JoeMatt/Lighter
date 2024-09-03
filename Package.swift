@@ -1,11 +1,11 @@
-// swift-tools-version:5.6
+// swift-tools-version:6.0
 
 import PackageDescription
 
 var package = Package(
   name: "Lighter",
 
-  platforms: [ .macOS(.v10_15), .iOS(.v13) ],
+  platforms: [ .macOS(.v10_15), .iOS(.v13), .macCatalyst(.v13) ],
   
   products: [
     .library(name: "Lighter",         targets: [ "Lighter"       ]),
@@ -112,7 +112,8 @@ var package = Package(
                 dependencies: [ "LighterGeneration" ]),
     .testTarget(name: "NorthwindTests",
                 dependencies: [ "LighterGeneration" ])
-  ]
+  ],
+  .swiftLanguageVersions: [ .v5, v6 ]
 )
 
 #if !(os(macOS) || os(iOS) || os(watchOS) || os(tvOS))
